@@ -1,0 +1,27 @@
+{
+  "name": "eb-www",
+  "version": "1.0.0",
+  "description": "Execute Big 2.0, with a minimalistic vision and a clearer focus.",
+  "repository": "git@github.com:executebig/www.git",
+  "author": "Mingjie Jiang <jiang@mingjie.dev>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "atomic-algolia": "^0.3.19",
+    "autoprefixer": "^10.1.0",
+    "cssnano": "^4.1.10",
+    "dotenv": "^8.2.0",
+    "postcss": "^8.1.10",
+    "postcss-cli": "^8.3.0",
+    "postcss-import": "^13.0.0",
+    "stripe": "^8.126.0",
+    "vercel": "^21.0.1"
+  },
+  "scripts": {
+    "dev": "hugo server",
+    "build": "hugo --gc --minify && yarn algolia",
+    "dry": "hugo --gc --minify",
+    "algolia": "atomic-algolia"
+  }
+}

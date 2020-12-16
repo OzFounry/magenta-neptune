@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Linode",
+    "logo": "linode.svg",
+    "link": "https://linode.com/"
+  },
+  {
+    "name": "OpenPhone",
+    "logo": "openphone.png",
+    "link": "https://www.openphone.co/"
+  },
+  {
+    "name": "Zapier",
+    "logo": "zapier.png",
+    "link": "https://zapier.com/"
+  },
+  {
+    "name": "Bugsnag",
+    "logo": "bugsnag.svg",
+    "link": "https://www.bugsnag.com/"
+  },
+  {
+    "name": "DigitalOcean",
+    "logo": "digitalocean.svg",
+    "link": "https://digitalocean.com/"
+  },
+  {
+    "name": "Checkly",
+    "logo": "checkly.svg",
+    "link": "https://www.checklyhq.com/"
+  },
+  {
+    "name": "Vercel",
+    "logo": "vercel-dark.svg",
+    "link": "https://vercel.com/?utm_source=executebig&utm_campaign=oss"
+  }
+]

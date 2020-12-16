@@ -1,0 +1,88 @@
+{{ define "title" }}{{ .Site.Title }}: Accessible CS exploration programs for all{{ end}}
+{{ define "body_classes" }}page-home{{ end }}
+{{ define "meta_tags" }}
+<meta name="description" content="{{ .Site.Params.homepage_meta_tags.meta_description }}" />
+<meta property="og:title" content="{{ .Site.Params.homepage_meta_tags.meta_og_title }}" />
+<meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+<meta property="og:url" content="{{ .Site.Params.homepage_meta_tags.meta_og_url }}" />
+<meta property="og:image" content="{{if not .IsHome}}https://og.executebig.org/{{ safeURL (plainify .Title) }}?theme=light&fontSize=120px{{else}}https://og.executebig.org/{{ safeURL (plainify .Site.Title) }}?theme=dark&fontSize=200px{{ end }}" />
+<meta property="og:description" content="{{ .Site.Params.homepage_meta_tags.meta_og_description }}" />
+<meta name="twitter:card" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_card }}" />
+<meta name="twitter:site" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_site }}" />
+<meta name="twitter:creator" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_creator }}" />
+{{ end }}
+{{ define "main" }}
+<div class="intro">
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
+        {{ .Content }}
+      </div>
+      {{ if .Params.intro_image }}
+      <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
+        <object tabindex="-1" id="pig" type="image/svg+xml" data="/images/features/pig-drop.svg" class="home-intro intro-image{{ if .Params.intro_image_absolute }} intro-image-absolute{{ end }}{{ if .Params.intro_image_hide_on_mobile }} intro-image-hide-mobile{{ end }}">
+          <img src="/images/features/pig-drop.svg" width="308" height="360" alt="Execute Big's 'Flying Pig' mascot" />
+        </object>
+        <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.5/dist/vivus.min.js" integrity="sha256-EQbVGDv8AeB/IA3V0dU2OSI1PDKb8wEG3sRDAdkgoGc=" crossorigin="anonymous" async></script>
+        <script async>
+          new Vivus('pig', { type: 'oneByOne', duration: 150, pathTimingFunction: Vivus.EASE });
+        </script>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ $programs := where (where .Site.RegularPages "Type" "programs") ".Params.featured" true }}
+{{if gt (len $programs) 0}}
+<div class="strip">
+  <div class="container pt-6 pb-6 pb-md-10">
+    <div class="row justify-content-start">
+      {{ $services := (where .Site.RegularPages "Type" "programs") }}
+      {{ range first 4 (sort $services ".Params.weight") }}
+      {{ if not .Params.private }}
+      <div class="col-12 col-md-6 mb-3">
+        {{ .Render "summary" }}
+      </div>
+      {{ else }}
+      {{ if .Params.pilot }}
+      <div class="col-12 col-md-6 mb-3">
+        <div class="service service-summary">
+          <div class="service-content">
+            <h2 class="service-title piloting">
+              Coming Soon <span class="badge badge-warning" style="font-size: .9rem; vertical-align: middle;">Invite-Only Pilot</span>
+            </h2>
+            <p>We're hard at work planning something new. Interested in getting a preview and sharing some thoughts? <a href="/contact">Contact us</a>, and we'd love to chat with you!</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+      {{ end }}
+      {{ end }}
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <a class="button button-primary" href="{{ "programs/" | relURL }}">View Programs</a>
+      </div>
+      <div class="col-auto">
+        <a class="button button-primary" href="{{ "act/" | relURL }}">Get Involved</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{end}}
+<div class="strip strip-grey journal">
+  <div class="container pt-6 pb-6">
+    {{ range first 1 (where (where .Site.RegularPages "Type" "journals") ".Params.featured" "=" true) }}
+    <p class="metadata">Published {{dateFormat "Jan 2, 2006" .Params.date}} by {{ .Params.author }}</p>
+    <div class="row justify-content-start">
+      <div class="col-12">
+        <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <p>{{ .Description | default .Content | plainify | htmlUnescape | truncate 240 "…" }}</p>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+{{ define "footer_js" }}
+{{ end }}

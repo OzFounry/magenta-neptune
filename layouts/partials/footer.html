@@ -1,0 +1,23 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <div>
+            <span class="brand-title footer-title">{{.Site.Title}}</span>
+          </div>
+          <ul>
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.footer }}
+            <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "footer" . }} active{{ end }}">
+              <a href="{{.URL}}">
+                {{ .Name }}
+              </a>
+            </li>
+            {{end}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+baseURL = "https://executebig.org/"
+languageCode = "en-us"
+title = "Execute Big"
+
+disableHugoGeneratorInject = true
+disableKinds = ["categories"]
+
+enableRobotsTXT = true
+
+[outputs]
+home = ["HTML","RSS","Algolia"]
+
+[outputFormats.Algolia]
+  mediaType = "application/json"
+  baseName = "algolia"
+  isPlainText = true
+  notAlternative = true
+
+[params]
+  [params.tracking] 
+    id = "826fd4a9-b041-450f-812f-c1734f2808e5"
+    host = "https://umami.executebig.org/umami.js"
+
+  [params.stripe]
+    testKey = "pk_test_51HFmyUGd5RDXy0STaqkryz2uhc4LjMMkAeeMenLrDFAKdsWRaB5iWBLOkmR1KOD39liVOD2JK9Q930qHbcJiFNmq00Pxo6VlMp"
+    pubKey = "pk_live_51HFmyUGd5RDXy0STk1dGHANECh5LHKThHSHj3KvpMRPsoM4GbRjpuJKBrPtIJ3B8rkATb1zASRFuabQUWsu1PMr600Tj5wMNAZ"
+
+  [params.announcement]
+    show = true
+
+  [params.logo]
+    mobile = "images/logo-mobile.svg"
+    desktop = "images/logo.svg"
+    desktop_height = "36px"
+    desktop_width = "131px"
+    alt = "Execute Big Pig"
+
+  [params.homepage_meta_tags]
+    meta_description = "A minimal & transparent student-run organization founded to enable all students to experience and explore computer science education."
+    meta_og_title = "Execute Big"
+    meta_og_type = "website"
+    meta_og_url = "https://executebig.org"
+    meta_og_description = "A minimal & transparent student-run organization founded to enable all students to experience and explore computer science education."
+    meta_twitter_card = "summary_large_image"
+    meta_twitter_site = "@executebig"
+    meta_twitter_creator = "@executebig"
+
+  [params.footer]
+    copyright_text = 'A 501(c)(3) public charity, EIN 85-2160468.'
+
+[menu]
+  # Main Menu
+  [[menu.main]]
+    name = "Programs"
+    url = "/programs/"
+      weight = 1
+
+  [[menu.main]]
+      name = "Journals"
+      url = "/journals/"
+      weight = 3
+    
+  [[menu.main]]
+      name = "Transparency"
+      url = "/transparency/"
+      weight = 4
+
+  [[menu.main]]
+      name = "Donate"
+      url = "/donate/"
+      weight = 5
+
+  # Footer Menu
+      
+  [[menu.footer]]
+      name = "Team"
+      url = "/team/"
+      weight = 1
+
+  [[menu.footer]]
+    name = "Brand"
+    url = "/brand/"
+      weight = 2
+
+  [[menu.footer]]
+    name = "Privacy"
+    url = "/privacy/"
+      weight = 3
+
+  [[menu.footer]]
+    name = "Press"
+    url = "/press/"
+      weight = 5
+
+  [[menu.footer]]
+      name = "Contact"
+      url = "/contact/"
+      weight = 6
+
+[taxonomies]
+  journals_tags = "journals/tags"
+
+[sitemap]
+  filename = "sitemap.xml"
+  priority = 0.5
